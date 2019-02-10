@@ -9,7 +9,7 @@ sicko = open('./res/sicko.jpg', 'rb').read()
 
 
 def response(flow):
-    if flow.response.headers['Content-Type'] in image_mimes:
+    if 'Content-Type' in flow.response.headers and flow.response.headers['Content-Type'] in image_mimes:
         result = v.check_stream(flow.response.get_content())
         if result:
             flow.response.content = sicko
